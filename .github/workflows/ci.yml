@@ -35,7 +35,7 @@ jobs:
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.12.21
-        tf_actions_subcommand: "fmt -check"
+        tf_actions_subcommand: "fmt"
 
     - name: "Terraform Init"
       uses: hashicorp/terraform-github-actions@master
