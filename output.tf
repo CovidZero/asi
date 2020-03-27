@@ -1,4 +1,4 @@
 output "hostname" {
   description = "Application hostname"
-  value = module.hostname.name
+  value       = module.hostname.name
 }
