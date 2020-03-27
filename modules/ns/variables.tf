@@ -11,5 +11,5 @@ variable "alb_url" {
 }
 variable "is_proxied" {
   description = "Whether the record gets Cloudflare's origin protection; defaults to `false`."
-  default = false
+  default     = false
 }
