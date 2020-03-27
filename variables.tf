@@ -130,7 +130,7 @@ variable "cloudflare_api_token" {
   description = "cloudflare api token to be used in integations"
 }
 
-variable "hostname_default" {
-  description = "If you'd like to an specific hostname instead of app_name.domain.com"
+variable "hostname_api_default" {
+  description = "If you'd like to an specific hostname for API instead of app_name.domain.com"
   default     = ""
 }
