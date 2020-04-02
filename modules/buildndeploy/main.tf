@@ -33,13 +33,13 @@ resource "aws_codebuild_project" "docker_build" {
     privileged_mode = true
   }
   source {
-    type      = "CODEPIPELINE"
-    buildspec = templatefile("${path.module}/appspec.yml",{ app_environment     = var.environment,
-                                                            repository_uri      = var.registry_uri,
-                                                            region              = var.region,
-                                                            cluster_name        = var.ecs_cluster_name,
-                                                            subnet_id           = join(",", var.task_subnet_id),
-                                                            security_group_ids  = join(",", var.task_secgrp_id) })
+    type = "CODEPIPELINE"
+    buildspec = templatefile("${path.module}/appspec.yml", { app_environment = var.environment,
+      repository_uri = var.registry_uri,
+      region         = var.region,
+      cluster_name   = var.ecs_cluster_name,
+      subnet_id      = join(",", var.task_subnet_id),
+    security_group_ids = join(",", var.task_secgrp_id) })
   }
 }
 

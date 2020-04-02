@@ -45,7 +45,7 @@ variable "repository_branch" {
 
 variable "base_domain" {
   description = "top level domain where application should respond"
-  default     = "covidzero.io"
+  default     = "covidzero.com.br"
 }
 
 variable "vpc_cidr" {
@@ -85,7 +85,7 @@ variable "app_count" {
 
 variable "fargate_cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-  default     = "512"
+  default     = "1024"
 }
 
 variable "fargate_memory" {
@@ -95,7 +95,7 @@ variable "fargate_memory" {
 
 variable "health_check_path" {
   description = "path for healthcheck"
-  default     = "/"
+  default     = "/data_api/v1/"
 }
 
 variable "db_name" {
@@ -111,4 +111,31 @@ variable "db_username" {
 variable "db_passwd" {
   description = "database password"
   default     = "covid-passwd"
+}
+
+variable "jwt_secret_key" {
+  description = "jwt secret key"
+  default     = ""
+}
+
+variable "auth_username" {
+  description = "auth username"
+}
+
+variable "auth_password" {
+  description = "auth_password"
+}
+
+variable "cloudflare_api_token" {
+  description = "cloudflare api token to be used in integations"
+}
+
+variable "hostname_api_default" {
+  description = "If you'd like to an specific hostname for API instead of app_name.domain.com"
+  default     = ""
+}
+
+variable "hostname_app_front_default" {
+  description = "If you'd like to an specific hostname for Frntend Application instead of app_name.domain.com"
+  default     = ""
 }

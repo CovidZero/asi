@@ -36,6 +36,9 @@ module "fargate" {
   db_name           = var.db_name
   db_username       = var.db_username
   db_passwd         = var.db_passwd
+  jwt_secret_key    = var.jwt_secret_key
+  auth_username     = var.auth_username
+  auth_password     = var.auth_password
 }
 
 module "buildndeploy" {
@@ -51,4 +54,12 @@ module "buildndeploy" {
   task_subnet_id    = module.network.subnet_prv
   task_secgrp_id    = module.fargate.task_secgrp_id
   github_token      = var.github_token
+}
+
+module "hostname_api" {
+  source      = "./modules/ns"
+  app_name    = var.hostname_api_default
+  alb_url     = module.fargate.alb_hostname
+  base_domain = var.base_domain
+  is_proxied  = true
 }
