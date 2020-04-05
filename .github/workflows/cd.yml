@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_WORKSPACE: "production"
+      TF_WORKSPACE: "staging"
       TF_ACTIONS_VERSION: 0.12.23
 
     steps:
