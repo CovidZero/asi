@@ -64,7 +64,7 @@ data "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "app"
+  family                   = "app-${var.environment}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = aws_iam_role.ecs-role.arn
