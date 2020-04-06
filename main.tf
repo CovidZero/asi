@@ -44,6 +44,7 @@ module "fargate" {
 module "buildndeploy" {
   source            = "./modules/buildndeploy"
   environment       = var.environment
+  app_environment   = var.app_environment
   region            = var.region
   registry_uri      = module.registry.repository_uri
   repository_owner  = var.repository_owner

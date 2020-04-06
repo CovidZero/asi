@@ -10,7 +10,7 @@ variable "github_token" {
 
 variable "app_name" {
   description = "application base unique name"
-  default     = "covidzero"
+  default     = "cz"
 }
 
 variable "app_port" {
@@ -25,6 +25,11 @@ variable "use_ssl" {
 
 variable "environment" {
   description = "Name of an environment (e.g. staging, qa, production)"
+  default     = "staging"
+}
+
+variable "app_environment" {
+  description = "Name of an app profile environment variables"
   default     = "staging"
 }
 
