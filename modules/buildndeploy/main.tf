@@ -34,7 +34,7 @@ resource "aws_codebuild_project" "docker_build" {
   }
   source {
     type = "CODEPIPELINE"
-    buildspec = templatefile("${path.module}/appspec.yml", { app_environment = var.environment,
+    buildspec = templatefile("${path.module}/appspec.yml", { app_environment = var.app_environment,
       repository_uri = var.registry_uri,
       region         = var.region,
       cluster_name   = var.ecs_cluster_name,

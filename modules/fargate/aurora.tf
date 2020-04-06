@@ -5,17 +5,18 @@ resource "aws_db_subnet_group" "main" {
 }
 
 resource "aws_rds_cluster" "default" {
-  cluster_identifier      = "db-${var.app_name}-${var.environment}"
-  database_name           = var.db_name
-  master_username         = var.db_username
-  master_password         = var.db_passwd
-  skip_final_snapshot     = false
-  enable_http_endpoint    = true
-  storage_encrypted       = true
-  backup_retention_period = "1"
-  db_subnet_group_name    = aws_db_subnet_group.main.name
-  engine                  = "aurora-postgresql"
-  engine_mode             = "serverless"
+  cluster_identifier        = "db-${var.app_name}-${var.environment}"
+  database_name             = var.db_name
+  master_username           = var.db_username
+  master_password           = var.db_passwd
+  skip_final_snapshot       = false
+  enable_http_endpoint      = true
+  storage_encrypted         = true
+  backup_retention_period   = "1"
+  db_subnet_group_name      = aws_db_subnet_group.main.name
+  engine                    = "aurora-postgresql"
+  engine_mode               = "serverless"
+  final_snapshot_identifier   = "final-snapshot"
   vpc_security_group_ids = [
     aws_security_group.rds.id
   ]

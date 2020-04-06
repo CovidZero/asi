@@ -6,6 +6,10 @@ variable "environment" {
   description = "Name of an environment (e.g. staging, qa, production)"
 }
 
+variable "app_environment" {
+  description = "Name of an app profile environment variables"
+}
+
 variable "region" {
   description = "The region to use"
 }
