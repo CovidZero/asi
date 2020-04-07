@@ -4,6 +4,12 @@ module "registry" {
   environment = var.environment
 }
 
+module "crawler_registry" {
+  source      = "./modules/registry"
+  app_name    = var.crawler_name
+  environment = var.environment
+}
+
 module "network" {
   source      = "./modules/network"
   environment = var.environment
