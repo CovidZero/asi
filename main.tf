@@ -4,6 +4,12 @@ module "registry" {
   environment = var.environment
 }
 
+module "ecs" {
+  source     = "./modules/ecs"
+  app_name   = var.app_name
+  environent = var.environent
+}
+
 module "network" {
   source      = "./modules/network"
   environment = var.environment
@@ -50,7 +56,7 @@ module "buildndeploy" {
   repository_owner  = var.repository_owner
   repository_name   = var.repository_name
   repository_branch = var.repository_branch
-  ecs_cluster_name  = module.fargate.cluster_name
+  ecs_cluster_name  = module.ecs.cluster_name
   ecs_service_name  = module.fargate.service_name
   task_subnet_id    = module.network.subnet_prv
   task_secgrp_id    = module.fargate.task_secgrp_id

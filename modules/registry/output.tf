@@ -7,4 +7,3 @@ output "repository_uri" {
   description = "The URI of the repository."
   value       = aws_ecr_repository.app.repository_url
 }
-

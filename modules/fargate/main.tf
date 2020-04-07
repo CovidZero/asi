@@ -52,13 +52,6 @@ module "alb_listener" {
   base_domain = var.base_domain
 }
 
-/* ========================================================================= */
-/* ================= ECS =================================================== */
-/* ========================================================================= */
-resource "aws_ecs_cluster" "main" {
-  name = "${var.app_name}-${var.environment}-ecs-cluster"
-}
-
 data "aws_ecs_task_definition" "app" {
   task_definition = aws_ecs_task_definition.app.family
 }
