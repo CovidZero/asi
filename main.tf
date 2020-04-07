@@ -5,9 +5,9 @@ module "registry" {
 }
 
 module "ecs" {
-  source     = "./modules/ecs"
-  app_name   = var.app_name
-  environent = var.environent
+  source      = "./modules/ecs"
+  app_name    = var.app_name
+  environment = var.environment
 }
 
 module "network" {
