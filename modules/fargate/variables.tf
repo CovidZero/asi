@@ -99,3 +99,11 @@ variable "auth_username" {
 variable "auth_password" {
   description = "auth_password"
 }
+
+variable "ecs_cluster_id" {
+  description = "ecs cluster id"
+}
+
+variable "ecs_cluster_name" {
+  description = "ecs cluster name"
+}

@@ -110,7 +110,7 @@ DEFINITION
 
 resource "aws_ecs_service" "main" {
   name                               = "${var.app_name}-${var.environment}-ecs-service"
-  cluster                            = aws_ecs_cluster.main.id
+  cluster                            = var.ecs_cluster_id
   task_definition                    = "${aws_ecs_task_definition.app.family}:${max("${aws_ecs_task_definition.app.revision}", "${data.aws_ecs_task_definition.app.revision}")}"
   desired_count                      = var.app_count
   deployment_minimum_healthy_percent = var.deploy_min_t
@@ -133,7 +133,7 @@ resource "aws_ecs_service" "main" {
 /* ========================================================================= */
 resource "aws_appautoscaling_target" "target" {
   service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
+  resource_id        = "service/${var.ecs_cluster_name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   role_arn           = aws_iam_role.ecs-role.arn
   min_capacity       = var.scale_min
@@ -144,7 +144,7 @@ resource "aws_appautoscaling_target" "target" {
 resource "aws_appautoscaling_policy" "scale_up" {
   name               = "${var.environment}-scale-up"
   service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
+  resource_id        = "service/${var.ecs_cluster_name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -162,7 +162,7 @@ resource "aws_appautoscaling_policy" "scale_up" {
 resource "aws_appautoscaling_policy" "scale_down" {
   name               = "${var.environment}-scale-down"
   service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
+  resource_id        = "service/${var.ecs_cluster_name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -187,7 +187,7 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_high" {
   statistic           = "Maximum"
   threshold           = "70"
   dimensions = {
-    ClusterName = aws_ecs_cluster.main.name
+    ClusterName = var.ecs_cluster_name
     ServiceName = aws_ecs_service.main.name
   }
   alarm_actions = [aws_appautoscaling_policy.scale_up.arn]

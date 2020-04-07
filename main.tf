@@ -24,6 +24,8 @@ module "fargate" {
   app_name          = var.app_name
   app_port          = var.app_port
   app_image         = "${module.registry.repository_uri}:latest"
+  ecs_cluster_id    = module.ecs.cluster_id
+  ecs_cluster_name  = module.ecs.cluster_name
   scale_min         = var.scale_min
   scale_max         = var.scale_max
   region            = var.region
