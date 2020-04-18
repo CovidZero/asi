@@ -16,7 +16,7 @@ resource "aws_rds_cluster" "default" {
   db_subnet_group_name      = aws_db_subnet_group.main.name
   engine                    = "aurora-postgresql"
   engine_mode               = "serverless"
-  final_snapshot_identifier   = "final-snapshot"
+  final_snapshot_identifier = "final-snapshot"
   vpc_security_group_ids = [
     aws_security_group.rds.id
   ]
