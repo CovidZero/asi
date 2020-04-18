@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - staging
+      - master
 
 jobs:
   deploy:
@@ -26,7 +27,7 @@ jobs:
         tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
     - name: "Terraform Apply Staging"
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
