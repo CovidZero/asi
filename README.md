@@ -89,19 +89,19 @@ A simple **route53** entry to attach a new [subdomain](modules/ns/main.tf#L11-L1
 
 ## Continuous Delivery
 
-Before start to design the pipeline, a artifacts storage place is required. **AWS S3** is usually the way to go and don't require too much configuration to [setup](modules/buildndeploy/main.tf#L7-L14).
+Before start to design the pipeline, a artifacts storage place is required. **AWS S3** is usually the way to go and don't require too much configuration to [setup](modules/buildndeploy/ecs/main.tf#L7-L14).
 
 ### CodeBuild
 
-After a working infrastructure, build the docker image is the next step. For that, **AWS CodeBuild** is the way to go. First defining how to [build](modules/buildndeploy/main.tf#L22-L44) which will require a [file](modules/buildndeploy/appspec.yml) with all the build details. The build process will create the required artifacts and make them available.
+After a working infrastructure, build the docker image is the next step. For that, **AWS CodeBuild** is the way to go. First defining how to [build](modules/buildndeploy/ecs/main.tf#L22-L44) which will require a [file](modules/buildndeploy/ecs/appspec.yml) with all the build details. The build process will create the required artifacts and make them available.
 
 ### CodeDeploy
 
-After definind the build, we have to handle the deployment. It's [straightforward](modules/buildndeploy/main.tf#L93-L109) to inform Codedeploy how to handle the deployment as we already have a target cluster setted and a build definition from CodeBuild.
+After definind the build, we have to handle the deployment. It's [straightforward](modules/buildndeploy/ecs/main.tf#L93-L109) to inform Codedeploy how to handle the deployment as we already have a target cluster setted and a build definition from CodeBuild.
 
 #### CodePipeline
 
-Once we have networking, a working cluster and a build step, is time to set up Continuous Delivery pipeline. CodeDeploy plays a great role here and it's [full pipeline description](modules/buildndeploy/main.tf#L52-L109) is very clear to read. It basically create all the required steps to apply a hook on a github repo/branch and [get code from there](modules/buildndeploy/main.tf#L59-L75). Then, invokes CodeBuild to [build everything](modules/buildndeploy/main.tf#L77-L91) and, finally, [deploy](modules/buildndeploy/main.tf#L93-L109) into ECS fargate cluster using CodeDeploy.
+Once we have networking, a working cluster and a build step, is time to set up Continuous Delivery pipeline. CodeDeploy plays a great role here and it's [full pipeline description](modules/buildndeploy/ecs/main.tf#L52-L109) is very clear to read. It basically create all the required steps to apply a hook on a github repo/branch and [get code from there](modules/buildndeploy/ecs/main.tf#L59-L75). Then, invokes CodeBuild to [build everything](modules/buildndeploy/ecs/main.tf#L77-L91) and, finally, [deploy](modules/buildndeploy/ecs/main.tf#L93-L109) into ECS fargate cluster using CodeDeploy.
 
 The whole process is fast executed by terraform but take some time to perform the safe deployment to the fargate cluster due to some internal security triggers.
 
