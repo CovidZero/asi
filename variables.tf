@@ -1,11 +1,31 @@
-variable "region" {
-  description = "AWS region to build this infrastructure"
-  default     = "us-east-2"
+variable "repository_name" {
+  description = "GitHub repository name"
+  default     = "st"
+}
+
+variable "static_repository_name" {
+  description = "GitHub static website repository name"
+  default     = "st"
+}
+
+variable "repository_owner" {
+  description = "Github repository username"
+  default     = "paoloo"
+}
+
+variable "repository_branch" {
+  description = "Github repository branch"
+  default     = "master"
 }
 
 variable "github_token" {
   description = "GitHub OAuth key"
   default     = ""
+}
+
+variable "region" {
+  description = "AWS region to build this infrastructure"
+  default     = "us-east-2"
 }
 
 variable "app_name" {
@@ -33,20 +53,6 @@ variable "app_environment" {
   default     = "staging"
 }
 
-variable "repository_owner" {
-  description = "Github repository username"
-  default     = "paoloo"
-}
-
-variable "repository_name" {
-  description = "GitHub repository name"
-  default     = "st"
-}
-
-variable "repository_branch" {
-  description = "Github repository branch"
-  default     = "master"
-}
 
 variable "base_domain" {
   description = "top level domain where application should respond"
