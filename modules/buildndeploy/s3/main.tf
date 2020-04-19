@@ -150,7 +150,7 @@ resource "aws_iam_role_policy" "buildndeploy-policy" {
         "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
         "elasticloadbalancing:RegisterTargets",
         "codebuild:*",
-        "s3:*,
+        "s3:*",
         "ecr:*",
         "ecs:RegisterTaskDefinition",
         "ecs:DescribeTaskDefinition",
