@@ -120,6 +120,7 @@ resource "aws_iam_role" "buildndeploy-role" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "Service": [
+          "codepipeline.amazonaws.com",
           "codebuild.amazonaws.com"
         ]
       },
@@ -141,8 +142,22 @@ resource "aws_iam_role_policy" "buildndeploy-policy" {
   "Statement": [
     {
       "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:Describe*",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:DeregisterTargets",
+        "elasticloadbalancing:Describe*",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "elasticloadbalancing:RegisterTargets",
         "codebuild:*",
-        "s3:*",
+        "s3:*,
+        "ecr:*",
+        "ecs:RegisterTaskDefinition",
+        "ecs:DescribeTaskDefinition",
+        "ecs:DescribeServices",
+        "ecs:CreateService",
+        "ecs:ListServices",
+        "ecs:UpdateService",
         "logs:PutLogEvents",
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
