@@ -29,7 +29,7 @@ resource "aws_codebuild_project" "node_build" {
   }
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/nodejs:12"
+    image        = "aws/codebuild/standard:4.0"
     type         = "LINUX_CONTAINER"
   }
   source {
@@ -143,10 +143,7 @@ resource "aws_iam_role_policy" "buildndeploy-policy" {
     {
       "Action": [
         "codebuild:*",
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:GetObjectVersion",
-        "s3:GetBucketVersioning",
+        "s3:*",
         "logs:PutLogEvents",
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
