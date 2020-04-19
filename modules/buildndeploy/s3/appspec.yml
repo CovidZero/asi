@@ -9,5 +9,6 @@ phases:
     commands:
       - echo [+] Build started on `date`
       - npm run build
+      - cd build
 artifacts:
   files: build/**/*
