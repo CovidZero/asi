@@ -11,4 +11,4 @@ phases:
       - npm run build
       - cd build
 artifacts:
-  files: build/**/*
+  files: ./**/*
