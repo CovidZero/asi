@@ -120,7 +120,6 @@ resource "aws_iam_role" "buildndeploy-role" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "Service": [
-          "codepipeline.amazonaws.com",
           "codebuild.amazonaws.com"
         ]
       },
