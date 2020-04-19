@@ -10,5 +10,4 @@ phases:
       - echo [+] Build started on `date`
       - npm run build
 artifacts:
-  files: build/static/**/*
-  discard-paths: yes
+  files: build/**/*
