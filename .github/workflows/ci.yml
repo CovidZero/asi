@@ -17,7 +17,7 @@ jobs:
 
 
     steps:
-    - name: "Check Workspace staging"
+    - name: "Check Workspace production"
       if: github.base_ref == 'master'
       run: echo "::set-env name=TF_WORKSPACE::production"
 

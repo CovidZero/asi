@@ -15,12 +15,12 @@ jobs:
       TF_ACTIONS_VERSION: 0.12.23
 
     steps:
-    - name: "Check Workspace staging"
-      if: github.base_ref == 'master'
+    - name: "Check Workspace production"
+      if: github.ref == 'master'
       run: echo "::set-env name=TF_WORKSPACE::production"
 
     - name: "Check Workspace staging"
-      if: github.base_ref == 'staging'
+      if: github.ref == 'staging'
       run: echo "::set-env name=TF_WORKSPACE::staging"
 
     - name: "Code Checkout"
