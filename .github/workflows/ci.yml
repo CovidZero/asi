@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_WORKSPACE: "staging"
+      TF_WORKSPACE: ${{ github.base_ref }}
       TF_ACTIONS_VERSION: 0.12.23
 
 
