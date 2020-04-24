@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: "Check Workspace production"
-      run: echo ${{ github.base_ref }}
+      run: echo ${{ github.ref }}
 
     - name: "Code Checkout"
       uses: actions/checkout@v1
