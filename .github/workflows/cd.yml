@@ -16,12 +16,7 @@ jobs:
 
     steps:
     - name: "Check Workspace production"
-      if: github.ref == 'master'
-      run: echo "::set-env name=TF_WORKSPACE::production"
-
-    - name: "Check Workspace staging"
-      if: github.ref == 'staging'
-      run: echo "::set-env name=TF_WORKSPACE::staging"
+      run: echo ${{ github.ref }}
 
     - name: "Code Checkout"
       uses: actions/checkout@v1
