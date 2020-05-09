@@ -42,7 +42,7 @@ module "fargate" {
 }
 
 module "buildndeploy" {
-  source            = "./modules/buildndeploy"
+  source            = "./modules/buildndeploy/ecs"
   environment       = var.environment
   app_environment   = var.app_environment
   region            = var.region

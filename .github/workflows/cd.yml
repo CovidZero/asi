@@ -3,6 +3,7 @@ name: "Terraform GitHub Actions CD"
 on:
   push:
     branches:
+      - staging
       - master
 
 jobs:
@@ -11,10 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_WORKSPACE: "production"
       TF_ACTIONS_VERSION: 0.12.23
 
     steps:
+    - name: "Check Workspace production"
+      if: github.ref == 'refs/heads/master'
+      run: echo "::set-env name=TF_WORKSPACE::production"
+
+    - name: "Check Workspace staging"
+      if: github.ref == 'refs/heads/staging'
+      run: echo "::set-env name=TF_WORKSPACE::staging"
+
     - name: "Code Checkout"
       uses: actions/checkout@v1
 
@@ -26,7 +34,7 @@ jobs:
         tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
     - name: "Terraform Apply Staging"
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
