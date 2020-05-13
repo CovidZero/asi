@@ -81,7 +81,7 @@ variable "scale_min" {
 
 variable "scale_max" {
   description = "Maximum nodes to scale up"
-  default     = 3
+  default     = 4
 }
 
 variable "az_count" {
@@ -91,7 +91,7 @@ variable "az_count" {
 
 variable "app_count" {
   description = "Number of docker containers to run"
-  default     = 1
+  default     = 2
 }
 
 variable "fargate_cpu" {
