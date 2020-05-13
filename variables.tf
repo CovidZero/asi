@@ -101,7 +101,7 @@ variable "fargate_cpu" {
 
 variable "fargate_memory" {
   description = "Fargate instance memory to provision (in MiB)"
-  default     = "2048"
+  default     = "4096"
 }
 
 variable "health_check_path" {
