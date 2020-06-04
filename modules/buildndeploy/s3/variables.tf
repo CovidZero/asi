@@ -21,3 +21,7 @@ variable "repository_branch" {
 variable "github_token" {
   description = "github oauth key"
 }
+
+variable "google_map_key" {
+  description = "Google Map Key"
+}

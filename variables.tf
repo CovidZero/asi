@@ -150,3 +150,8 @@ variable "hostname_app_front_default" {
   description = "If you'd like to an specific hostname for Frntend Application instead of app_name.domain.com"
   default     = ""
 }
+
+variable "google_map_key" {
+  description = "Google Map Key"
+  default     = ""
+}

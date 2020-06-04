@@ -35,7 +35,7 @@ resource "aws_codebuild_project" "node_build" {
   source {
     type = "CODEPIPELINE"
     buildspec = templatefile("${path.module}/appspec.yml", {
-      app_environment = var.environment,
+      google_map_key = var.google_map_key,
     })
   }
 }
