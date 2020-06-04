@@ -51,6 +51,7 @@ module "s3_buildndeploy" {
   repository_owner  = var.repository_owner
   repository_branch = var.repository_branch
   github_token      = var.github_token
+  google_map_key    = var.google_map_key
 }
 
 
