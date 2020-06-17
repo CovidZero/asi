@@ -36,6 +36,8 @@ resource "aws_codebuild_project" "node_build" {
     type = "CODEPIPELINE"
     buildspec = templatefile("${path.module}/appspec.yml", {
       google_map_key = var.google_map_key,
+      ribon_username = var.ribon_username,
+      ribon_password = var.ribon_password
     })
   }
 }

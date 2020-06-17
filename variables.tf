@@ -152,6 +152,16 @@ variable "hostname_app_front_default" {
 }
 
 variable "google_map_key" {
-  description = "Google Map Key"
+  description = "Google Map key"
+  default     = ""
+}
+
+variable "ribon_username" {
+  description = "Ribon username"
+  default     = ""
+}
+
+variable "ribon_password" {
+  description = "Ribon Password"
   default     = ""
 }
