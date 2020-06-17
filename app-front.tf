@@ -52,6 +52,8 @@ module "s3_buildndeploy" {
   repository_branch = var.repository_branch
   github_token      = var.github_token
   google_map_key    = var.google_map_key
+  ribon_username    = var.ribon_username
+  ribon_password    = var.ribon_password
 }
 
 

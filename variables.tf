@@ -155,3 +155,13 @@ variable "google_map_key" {
   description = "Google Map key"
   default     = ""
 }
+
+variable "ribon_username" {
+  description = "Ribon username"
+  default     = ""
+}
+
+variable "ribon_password" {
+  description = "Ribon Password"
+  default     = ""
+}

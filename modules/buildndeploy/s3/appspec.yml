@@ -8,6 +8,8 @@ phases:
     commands:
       - echo [+] Build started on `date`
       - echo "REACT_APP_GMAP_KEY=${google_map_key}" >> .env
+      - echo "REACT_APP_RIBON_USERNAME=${ribon_username}" >> .env
+      - echo "REACT_APP_RIBON_PASSWORD=${ribon_password}" >> .env
       - npm run build
 artifacts:
   files: '**/*'
